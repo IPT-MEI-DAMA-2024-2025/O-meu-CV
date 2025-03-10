@@ -1,25 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fadingEdge="vertical"
-        android:text="Olá Mundo!"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="60sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!-- TextView serve para mostrar texto.
+             atua como uma 'label' -->
+        <!-- texto a mostrar uma mensagem como ´cabeçalho' na minha app -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="cursive"
+            android:text="@string/app_name"
+            android:textSize="30sp"
+            android:textStyle="bold|italic" />
+
+        <!-- mensagem a pedir um valor a ser introduzido pelo utilizador -->
+        <TextView
+            android:id="@+id/nickname_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ask_for_nickname"
+            android:textSize="15sp" />
+        <!-- ler a resposta do utilizador -->
+        <EditText
+            android:id="@+id/nickname_textBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/textbox_message"
+            android:inputType="text"
+            android:text=""
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/continue_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/button_text"
+            android:textAlignment="center" />
+
+
+        <!-- contentor para mostrar o texto corrido -->
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <!-- texto obtido de https://www.lipsum.com/  -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:padding="10dp"
+                android:text="@string/curriculum"
+                android:textAlignment="textStart"
+                android:textSize="15sp"
+                android:visibility="visible" />
+        </ScrollView>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
