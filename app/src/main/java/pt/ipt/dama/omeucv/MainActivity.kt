@@ -1,8 +1,10 @@
 package pt.ipt.dama.omeucv
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ScrollView
@@ -34,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         // preciso fazer a 'ponte' entre o ficheiro de código e a interface
         // vamos fazer pela forma mais simples
         findViewById<Button>(R.id.continue_button).setOnClickListener {
-            showCV()
+            showCV(it)
         }
 
     }
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * esconde o botão e mostra o CV do utilizador
      */
-    private fun showCV() {
+    private fun showCV(view: View) {
         // TODO("Not yet implemented")
         // se quiser posso apagar a instrução acima
 
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity() {
          * 1- atribuir à textView do diminutivo (nickname_text) o conteúdo da textbox
          * 2- esconder o botão e a textbox
          * 3- mostrar o CV
-         * 4-
+         * 4- esconder o teclado
          */
 
         // 1-
@@ -79,6 +81,9 @@ class MainActivity : AppCompatActivity() {
         // mostrá-la
         auxScrollView.visibility = View.VISIBLE
 
+        // 4- Esconder o teclado
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
 
     }
 }
